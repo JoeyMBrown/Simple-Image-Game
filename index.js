@@ -17,10 +17,24 @@ function init() {
 //3.name is the id of the image clicked
 //4.name is images and the image id plus jpeg
 //5.set image.src to name var
+//6.Call reblur function in 2 secs with the eventObj.target or image
 function showAnswer(eventObj) {
     var image = eventObj.target;
     
     var name = image.id;
     name = "images/" + name + ".jpg";
+    image.src = name;
+
+    setTimeout(reblur, 2000, image);
+}
+
+
+//Function to reblur images
+//1.Assigns name to image id
+//2.Assigns name to image id + other strings
+//3.Assigns img.src to new name
+function reblur(image) {
+    var name = image.id;
+    name = "images/" + name + "blur.jpg";
     image.src = name;
 }
