@@ -7,7 +7,9 @@ window.onload = init;
 function init() {
     var images = document.getElementsByTagName("img");
     for (var i = 0; i < images.length; i ++) {
-        images[i].onclick = showAnswer;
+        //images[i].onclick = showAnswer;
+        images[i].onmouseover = showAnswer;
+        images[i].onmouseout = reblur;
     }
 }
 
@@ -25,7 +27,7 @@ function showAnswer(eventObj) {
     name = "images/" + name + ".jpg";
     image.src = name;
 
-    setTimeout(reblur, 2000, image);
+    // setTimeout(reblur, 2000, image);
 }
 
 
@@ -33,7 +35,8 @@ function showAnswer(eventObj) {
 //1.Assigns name to image id
 //2.Assigns name to image id + other strings
 //3.Assigns img.src to new name
-function reblur(image) {
+function reblur(/*image*/eventObj) {
+    var image = eventObj.target;
     var name = image.id;
     name = "images/" + name + "blur.jpg";
     image.src = name;
